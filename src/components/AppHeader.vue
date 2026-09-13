@@ -10,7 +10,13 @@ var store = useServiceStore()
   <header class="sticky top-0 z-20 backdrop-blur bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
       <RouterLink to="/" class="flex items-center gap-2 font-bold text-lg flex-shrink-0">
-        <span class="text-2xl">🛠️</span>
+        <img
+          src="/icons/icon-144.png"
+          alt="سرویس یار"
+          class="w-8 h-8 object-contain"
+          width="32"
+          height="32"
+        />
         <span>مدیریت سرویس</span>
       </RouterLink>
 

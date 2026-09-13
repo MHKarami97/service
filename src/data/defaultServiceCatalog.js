@@ -34,6 +34,41 @@ export var defaultServiceCatalog = [
     ]
   },
   {
+    id: 'motorcycle',
+    type: 'vehicle',
+    name: 'موتورسیکلت',
+    icon: '🏍️',
+    version: 1,
+    serviceTypes: [
+      { id: 'moto-oil-change', title: 'تعویض روغن موتور' },
+      { id: 'moto-chain-lube', title: 'روغن‌کاری و تنظیم زنجیر' },
+      { id: 'moto-chain-replace', title: 'تعویض زنجیر و چرخ‌دنده' },
+      { id: 'moto-brake-pads', title: 'لنت ترمز' },
+      { id: 'moto-tires', title: 'تعویض یا بالانس تایر' },
+      { id: 'moto-spark-plug', title: 'شمع' },
+      { id: 'moto-air-filter', title: 'فیلتر هوا' },
+      { id: 'moto-battery', title: 'باتری' },
+      { id: 'moto-carburetor-injector', title: 'سرویس کاربراتور/انژکتور' },
+      { id: 'moto-third-party-insurance', title: 'بیمه شخص ثالث' },
+      { id: 'moto-technical-inspection', title: 'معاینه فنی' }
+    ]
+  },
+  {
+    id: 'bicycle',
+    type: 'vehicle',
+    name: 'دوچرخه',
+    icon: '🚲',
+    version: 1,
+    serviceTypes: [
+      { id: 'bike-chain-lube', title: 'روغن‌کاری زنجیر' },
+      { id: 'bike-chain-replace', title: 'تعویض زنجیر' },
+      { id: 'bike-brake-pads', title: 'لنت/پد ترمز' },
+      { id: 'bike-tire-tube', title: 'تعویض تایر یا تیوپ' },
+      { id: 'bike-gear-tuning', title: 'تنظیم دنده و ترمز' },
+      { id: 'bike-bearing-service', title: 'سرویس یاتاقان و توپی چرخ' }
+    ]
+  },
+  {
     id: 'ac-cooler',
     type: 'appliance',
     name: 'کولر آبی',
@@ -45,6 +80,19 @@ export var defaultServiceCatalog = [
       { id: 'cooler-pump', title: 'پمپ آب کولر' },
       { id: 'cooler-cleaning', title: 'شستشوی کامل بدنه' },
       { id: 'cooler-motor-oil', title: 'روغن‌کاری موتور' }
+    ]
+  },
+  {
+    id: 'split-ac',
+    type: 'appliance',
+    name: 'کولر گازی (اسپلیت)',
+    icon: '🌬️',
+    version: 1,
+    serviceTypes: [
+      { id: 'split-filter-cleaning', title: 'شستشوی فیلتر یونیت داخلی' },
+      { id: 'split-gas-charge', title: 'شارژ گاز مبرد' },
+      { id: 'split-outdoor-cleaning', title: 'شستشوی کندانسور یونیت بیرونی' },
+      { id: 'split-drain-cleaning', title: 'رفع گرفتگی لوله تخلیه آب' }
     ]
   },
   {
@@ -113,6 +161,19 @@ export var defaultServiceCatalog = [
     ]
   },
   {
+    id: 'gas-heater',
+    type: 'appliance',
+    name: 'بخاری گازی/نفتی',
+    icon: '🪔',
+    version: 1,
+    serviceTypes: [
+      { id: 'heater-burner-cleaning', title: 'تمیزکاری مشعل' },
+      { id: 'heater-filter-replace', title: 'تعویض فیلتر' },
+      { id: 'heater-wick-replace', title: 'تعویض فتیله (نفتی)' },
+      { id: 'heater-safety-check', title: 'بررسی سیستم قطع اضطراری' }
+    ]
+  },
+  {
     id: 'water-purifier',
     type: 'appliance',
     name: 'دستگاه تصفیه آب',
@@ -126,6 +187,78 @@ export var defaultServiceCatalog = [
     ]
   },
   {
+    id: 'air-purifier',
+    type: 'appliance',
+    name: 'دستگاه تصفیه هوا',
+    icon: '🌫️',
+    version: 1,
+    serviceTypes: [
+      { id: 'ap-hepa-filter', title: 'تعویض فیلتر HEPA' },
+      { id: 'ap-carbon-filter', title: 'تعویض فیلتر کربن فعال' },
+      { id: 'ap-sensor-cleaning', title: 'تمیزکاری سنسور کیفیت هوا' }
+    ]
+  },
+  {
+    id: 'range-hood',
+    type: 'appliance',
+    name: 'هود آشپزخانه',
+    icon: '💨',
+    version: 1,
+    serviceTypes: [
+      { id: 'hood-filter-cleaning', title: 'شستشوی فیلتر چربی‌گیر' },
+      { id: 'hood-carbon-filter', title: 'تعویض فیلتر کربنی' },
+      { id: 'hood-motor-check', title: 'بررسی موتور و روغن‌کاری' }
+    ]
+  },
+  {
+    id: 'gas-stove',
+    type: 'appliance',
+    name: 'اجاق گاز',
+    icon: '🍳',
+    version: 1,
+    serviceTypes: [
+      { id: 'stove-burner-cleaning', title: 'تمیزکاری شعله‌پخش‌کن‌ها' },
+      { id: 'stove-hose-replace', title: 'تعویض شیلنگ گاز' },
+      { id: 'stove-ignition-check', title: 'بررسی جوش‌آور و رگولاتور' }
+    ]
+  },
+  {
+    id: 'vacuum-cleaner',
+    type: 'appliance',
+    name: 'جاروبرقی',
+    icon: '🧹',
+    version: 1,
+    serviceTypes: [
+      { id: 'vac-filter-bag-replace', title: 'تعویض فیلتر یا کیسه خاک' },
+      { id: 'vac-brush-roll-cleaning', title: 'تمیزکاری برس چرخان' },
+      { id: 'vac-hose-check', title: 'بررسی گرفتگی شیلنگ' }
+    ]
+  },
+  {
+    id: 'fire-extinguisher',
+    type: 'appliance',
+    name: 'کپسول آتش‌نشانی',
+    icon: '🧯',
+    version: 1,
+    serviceTypes: [
+      { id: 'extinguisher-pressure-check', title: 'بازرسی فشار سنج' },
+      { id: 'extinguisher-recharge', title: 'شارژ مجدد' },
+      { id: 'extinguisher-replace', title: 'تعویض کپسول' }
+    ]
+  },
+  {
+    id: 'smoke-gas-detector',
+    type: 'appliance',
+    name: 'دتکتور دود/گاز',
+    icon: '🚨',
+    version: 1,
+    serviceTypes: [
+      { id: 'detector-battery-replace', title: 'تعویض باتری' },
+      { id: 'detector-function-test', title: 'تست عملکرد آلارم' },
+      { id: 'detector-sensor-cleaning', title: 'تمیزکاری سنسور' }
+    ]
+  },
+  {
     id: 'parking-door-motor',
     type: 'appliance',
     name: 'موتور درب پارکینگ',
@@ -136,10 +269,21 @@ export var defaultServiceCatalog = [
       { id: 'pdm-battery-backup', title: 'تعویض باتری پشتیبان' },
       { id: 'pdm-limit-switch', title: 'تنظیم لیمیت سوییچ' }
     ]
+  },
+  {
+    id: 'elevator',
+    type: 'appliance',
+    name: 'آسانسور',
+    icon: '🛗',
+    version: 1,
+    serviceTypes: [
+      { id: 'elevator-monthly-service', title: 'سرویس ماهانه قرارداد' },
+      { id: 'elevator-cable-check', title: 'بازرسی کابل و ریل' },
+      { id: 'elevator-safety-inspection', title: 'بازرسی فنی دوره‌ای' }
+    ]
   }
 ]
 
-// دستگاه‌هایی که در نخستین اجرای برنامه به‌صورت خودکار به دارایی کاربر اضافه می‌شوند.
 export var seedItemIds = [
   'car',
   'ac-cooler',

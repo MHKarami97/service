@@ -101,7 +101,7 @@ function submit() {
           <label class="block">
             <span class="text-xs text-slate-400">تاریخ سرویس بعدی</span>
             <div class="mt-1">
-              <JalaliDatePicker v-model="form.nextServiceDate" placeholder="تاریخ سرویس بعدی را انتخاب کنید" />
+              <JalaliDatePicker v-model="form.nextServiceDate" placeholder="تاریخ سرویس بعدی" />
             </div>
           </label>
 

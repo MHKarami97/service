@@ -108,16 +108,18 @@ function saveOdometer() {
         </div>
       </div>
 
-      <div v-if="isVehicle" class="flex items-center gap-3 pt-2 border-t border-slate-100 dark:border-slate-700/60">
+      <div v-if="isVehicle" class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 pt-3 border-t border-slate-100 dark:border-slate-700/60">
         <label class="text-xs text-slate-400 flex-shrink-0">کیلومتر فعلی خودرو</label>
-        <input
-          v-model.number="odometerDraft"
-          type="number"
-          min="0"
-          inputmode="numeric"
-          class="flex-1 min-h-[40px] rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 text-sm"
-        />
-        <button type="button" class="min-h-[40px] px-3 rounded-xl bg-brand-500 text-white text-xs" @click="saveOdometer">ذخیره</button>
+        <div class="flex items-center gap-2 min-w-0">
+          <input
+            v-model.number="odometerDraft"
+            type="number"
+            min="0"
+            inputmode="numeric"
+            class="flex-1 min-w-0 min-h-[40px] rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 text-sm"
+          />
+          <button type="button" class="flex-shrink-0 min-h-[40px] px-3 rounded-xl bg-brand-500 text-white text-xs" @click="saveOdometer">ذخیره</button>
+        </div>
       </div>
     </div>
 

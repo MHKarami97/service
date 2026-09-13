@@ -1,12 +1,8 @@
 <script setup>
 import { reactive, computed, watch } from 'vue'
 import TagInput from './TagInput.vue'
+import JalaliDatePicker from './JalaliDatePicker.vue'
 
-/**
- * Add/Edit form for one ServiceRecord. Odometer fields only render for
- * vehicles (Liskov-friendly: the parent decides item.type, this component
- * just reacts to the `isVehicle` prop instead of duck-typing).
- */
 var props = defineProps({
   isOpen: { type: Boolean, default: false },
   isVehicle: { type: Boolean, default: false },
@@ -87,7 +83,9 @@ function submit() {
 
           <label class="block">
             <span class="text-xs text-slate-400">تاریخ انجام</span>
-            <input v-model="form.performedAt" type="date" required class="mt-1 w-full min-h-[44px] rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 text-sm" />
+            <div class="mt-1">
+              <JalaliDatePicker v-model="form.performedAt" placeholder="تاریخ انجام را انتخاب کنید" />
+            </div>
           </label>
 
           <label class="block">
@@ -102,7 +100,9 @@ function submit() {
 
           <label class="block">
             <span class="text-xs text-slate-400">تاریخ سرویس بعدی</span>
-            <input v-model="form.nextServiceDate" type="date" class="mt-1 w-full min-h-[44px] rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 text-sm" />
+            <div class="mt-1">
+              <JalaliDatePicker v-model="form.nextServiceDate" placeholder="تاریخ سرویس بعدی را انتخاب کنید" />
+            </div>
           </label>
 
           <template v-if="isVehicle">

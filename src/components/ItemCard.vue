@@ -16,15 +16,15 @@ var lastRecord = computed(() => props.item.lastRecord)
     :to="`/item/${item.id}`"
     class="block rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 sm:p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
   >
-    <div class="flex items-start justify-between gap-3 mb-3">
-      <div class="flex items-center gap-3">
-        <span class="text-2xl sm:text-3xl">{{ item.icon }}</span>
-        <div>
-          <h3 class="font-semibold text-sm sm:text-base leading-tight">{{ item.name }}</h3>
+    <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+      <div class="flex items-center gap-3 min-w-0">
+        <span class="text-2xl sm:text-3xl flex-shrink-0">{{ item.icon }}</span>
+        <div class="min-w-0">
+          <h3 class="font-semibold text-sm sm:text-base leading-tight truncate">{{ item.name }}</h3>
           <p class="text-xs text-slate-400 mt-0.5">{{ item.historyCount }} سرویس ثبت‌شده</p>
         </div>
       </div>
-      <StatusBadge :status="due.status" />
+      <StatusBadge :status="due.status" class="flex-shrink-0" />
     </div>
 
     <div class="grid grid-cols-2 gap-2 text-xs text-slate-500 dark:text-slate-400">

@@ -7,7 +7,7 @@ var store = useServiceStore()
 </script>
 
 <template>
-  <nav class="fixed bottom-0 inset-x-0 z-20 bg-white/95 dark:bg-slate-900/95 border-t border-slate-200 dark:border-slate-800 flex items-center justify-around h-16">
+  <nav class="sm:hidden fixed bottom-0 inset-x-0 z-20 bg-white/95 dark:bg-slate-900/95 border-t border-slate-200 dark:border-slate-800 flex items-center justify-around h-16">
     <RouterLink
       to="/"
       class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-4 text-sm"

@@ -12,7 +12,7 @@ onMounted(() => store.initialize())
 <template>
   <div class="min-h-screen flex flex-col text-slate-800 dark:text-slate-100">
     <AppHeader />
-    <main class="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-6 py-6 pb-24">
+    <main class="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-6 py-6 pb-24 sm:pb-6">
       <RouterView />
     </main>
     <AppFooter />

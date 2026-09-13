@@ -4,6 +4,7 @@ import { useServiceStore } from './stores/serviceStore'
 import AppHeader from './components/AppHeader.vue'
 import AppFooter from './components/AppFooter.vue'
 import BottomNav from './components/BottomNav.vue'
+import UpdatePrompt from './components/UpdatePrompt.vue'
 
 var store = useServiceStore()
 onMounted(() => store.initialize())
@@ -17,5 +18,6 @@ onMounted(() => store.initialize())
     </main>
     <AppFooter />
     <BottomNav />
+    <UpdatePrompt />
   </div>
 </template>

@@ -1,28 +1,10 @@
-/**
- * defaultServiceCatalog
- * ---------------------
- * Read-only reference data (Value Objects), never persisted per-user.
- * Two roles:
- *  1. `serviceTypes` feed the quick-select suggestions in the service
- *     history form (ServiceHistoryForm) for a given item, matched by the
- *     item's `catalogId`.
- *  2. The whole entry can be turned into an owned ServiceableItem via
- *     ServiceableItemFactory.createFromCatalog() when the user adds a new
- *     device from the picker (AddItemModal), or automatically on first run
- *     for `seedItemIds`.
- *
- * `version` bump convention mirrors the original app: increment when you
- * add/rename serviceTypes so future maintenance is traceable, even though
- * no reconciliation is required here (serviceTypes are looked up live, not
- * copied into the user's data).
- */
 export var defaultServiceCatalog = [
   {
-    id: 'car-samand-soren',
+    id: 'car',
     type: 'vehicle',
-    name: 'سمند سورن',
+    name: 'خودرو سواری',
     icon: '🚗',
-    version: 2,
+    version: 1,
     serviceTypes: [
       { id: 'oil-change', title: 'تعویض روغن موتور' },
       { id: 'oil-filter', title: 'فیلتر روغن' },
@@ -159,7 +141,7 @@ export var defaultServiceCatalog = [
 
 // دستگاه‌هایی که در نخستین اجرای برنامه به‌صورت خودکار به دارایی کاربر اضافه می‌شوند.
 export var seedItemIds = [
-  'car-samand-soren',
+  'car',
   'ac-cooler',
   'washing-machine',
   'dishwasher',

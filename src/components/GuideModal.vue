@@ -82,20 +82,6 @@ onUnmounted(() => {
               </section>
             </template>
 
-            <section v-if="activeGuide.sources.length" class="space-y-2 pt-3 border-t border-slate-100 dark:border-slate-700">
-              <h4 class="font-semibold text-xs text-slate-500 dark:text-slate-400">📚 منابع</h4>
-              <ul class="space-y-1.5">
-                <li v-for="source in activeGuide.sources" :key="source.id" class="text-xs flex flex-wrap items-center gap-2" dir="ltr">
-                  <p class="text-brand-600 dark:text-brand-300 underline underline-offset-2 break-words">
-                    {{ source.title }}
-                  </p>
-                  <span class="rounded-full bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300 px-2 py-0.5 text-[10px]" dir="rtl">
-                    {{ TRUST_LABELS[source.trust] }}
-                  </span>
-                </li>
-              </ul>
-            </section>
-
             <p class="text-[11px] text-slate-400 leading-5">
               این راهنما جنبه‌ی آموزشی دارد. مرجع نهایی، دفترچه‌ی راهنما و دستور سازنده‌ی وسیله شماست.
             </p>

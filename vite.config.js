@@ -12,7 +12,7 @@ export default defineConfig({
         name: 'مدیریت سرویس',
         short_name: 'سرویس‌یار',
         description: 'مدیریت تاریخچه و یادآوری سرویس دوره‌ای وسایل خانه و خودرو',
-        theme_color: '#d946ef',
+        theme_color: '#1e293b',
         background_color: '#FAFAFA',
         display: 'standalone',
         start_url: '/',

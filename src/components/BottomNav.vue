@@ -10,7 +10,7 @@ var store = useServiceStore()
   <nav class="sm:hidden fixed bottom-0 inset-x-0 z-20 bg-white/95 dark:bg-slate-900/95 border-t border-slate-200 dark:border-slate-800 flex items-center justify-around h-16">
     <RouterLink
       to="/"
-      class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-4 text-sm"
+      class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-3 text-xs"
       :class="route.name === 'home' ? 'text-brand-500 font-semibold' : 'text-slate-500 dark:text-slate-400'"
     >
       <span class="text-xl">🏠</span>
@@ -18,7 +18,7 @@ var store = useServiceStore()
     </RouterLink>
     <RouterLink
       to="/upcoming"
-      class="relative flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-4 text-sm"
+      class="relative flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-3 text-xs"
       :class="route.name === 'upcoming' ? 'text-brand-500 font-semibold' : 'text-slate-500 dark:text-slate-400'"
     >
       <span class="text-xl">⏰</span>
@@ -29,6 +29,14 @@ var store = useServiceStore()
       >
         {{ store.overdueCount + store.soonCount }}
       </span>
+    </RouterLink>
+    <RouterLink
+      to="/guide"
+      class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-3 text-xs"
+      :class="route.name === 'guide' ? 'text-brand-500 font-semibold' : 'text-slate-500 dark:text-slate-400'"
+    >
+      <span class="text-xl">💡</span>
+      <span>راهنما</span>
     </RouterLink>
   </nav>
 </template>

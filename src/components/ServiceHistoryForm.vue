@@ -2,14 +2,16 @@
 import { reactive, computed, watch } from 'vue'
 import TagInput from './TagInput.vue'
 import JalaliDatePicker from './JalaliDatePicker.vue'
+import GuideButton from './GuideButton.vue'
 
 var props = defineProps({
   isOpen: { type: Boolean, default: false },
   isVehicle: { type: Boolean, default: false },
   suggestions: { type: Array, default: () => [] },
-  initialRecord: { type: Object, default: null }
+  initialRecord: { type: Object, default: null },
+  hasGuide: { type: Function, default: () => false }
 })
-var emit = defineEmits(['save', 'close'])
+var emit = defineEmits(['save', 'close', 'guide'])
 
 function today() {
   return new Date().toISOString().slice(0, 10)
@@ -42,6 +44,7 @@ watch(
 
 var isEditing = computed(() => Boolean(props.initialRecord))
 var serviceTypeSuggestions = computed(() => props.suggestions.map((s) => s.title))
+var canShowGuide = computed(() => props.hasGuide(form.serviceType))
 
 function pickServiceType(title) {
   form.serviceType = title
@@ -73,6 +76,11 @@ function submit() {
           >
             {{ title }}
           </button>
+        </div>
+
+        <div v-if="canShowGuide" class="flex items-center justify-between gap-3 rounded-xl bg-brand-50 dark:bg-brand-700/20 px-3 py-2">
+          <p class="text-xs text-brand-700 dark:text-brand-200">برای «{{ form.serviceType }}» راهنما موجود است.</p>
+          <GuideButton compact @click="emit('guide', form.serviceType)" />
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">

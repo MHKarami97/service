@@ -1,11 +1,13 @@
 <script setup>
 import { formatDate, formatToman } from '../services/ServiceStatusPresenter'
+import GuideButton from './GuideButton.vue'
 
 defineProps({
   records: { type: Array, required: true },
-  isVehicle: { type: Boolean, default: false }
+  isVehicle: { type: Boolean, default: false },
+  hasGuide: { type: Function, default: () => false }
 })
-defineEmits(['edit', 'remove'])
+defineEmits(['edit', 'remove', 'guide'])
 </script>
 
 <template>
@@ -21,6 +23,7 @@ defineEmits(['edit', 'remove'])
           <p class="text-xs text-slate-400 mt-0.5">{{ formatDate(record.performedAt) }}</p>
         </div>
         <div class="flex items-center gap-1">
+          <GuideButton v-if="hasGuide(record.serviceType)" compact @click="$emit('guide', record.serviceType)" />
           <button type="button" class="min-w-[36px] min-h-[36px] flex items-center justify-center text-slate-400 hover:text-brand-500 transition-colors" aria-label="ویرایش" @click="$emit('edit', record)">
             ✏️
           </button>

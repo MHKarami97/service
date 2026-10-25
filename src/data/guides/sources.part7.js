@@ -1,0 +1,37 @@
+/**
+ * Source registry — part 7 (final batch).
+ */
+export var GUIDE_SOURCES_PART7 = {
+  'tredz-chain': { title: 'Tredz — How to lube your chain', url: 'https://www.tredz.co.uk/help-advice/product-help/how-to/maintenance/lube-your-chain', trust: 'unrated' },
+  'cyclon-chain': { title: 'CyclOn — How often should you lubricate your bike chain?', url: 'https://www.cyclonbikecare.com/en-nl/blogs/nieuws/how-often-should-you-lubricate-your-bike-chain', trust: 'unrated' },
+  'proscloset-chain': { title: "Pro's Closet — How to clean and lube a bike chain", url: 'https://www.theproscloset.com/blogs/news/bike-chains-and-lube-explained', trust: 'unrated' },
+  'parktool-derailleur': { title: 'Park Tool — Rear derailleur adjustment', url: 'https://www.parktool.com/en-int/blog/repair-help/rear-derailleur-adjustment', trust: 'trusted' },
+  'liv-derailleur': { title: 'Liv Cycling — How to adjust a bike derailleur', url: 'https://www.liv-cycling.com/global/campaigns/how-to-adjust-a-bike-derailleur/20943', trust: 'trusted' },
+  'sheldon-derailleur': { title: 'Sheldon Brown — Derailer adjustment', url: 'https://www.sheldonbrown.com/derailer-adjustment.html', trust: 'credible' },
+  'bikeradar-hub': { title: 'BikeRadar — How to service bike hubs', url: 'https://www.bikeradar.com/advice/workshop/how-to-service-the-hubs-on-your-bike', trust: 'trusted' },
+  'bikelab-hub': { title: 'BikeLab — Bicycle hub bearing maintenance', url: 'https://www.bikelabstudio.com/articles/bicycle-hub-bearing-maintenance-en.html', trust: 'unrated' },
+  'sl-hub': { title: 'SL Sport — Clean and grease a cup-and-cone hub', url: 'https://www.sl-sport-equipments.com/gb/content/352-how-to-clean-and-grease-a-cup-and-cone-road-bike-hub', trust: 'unrated' },
+  'wirecutter-vac': { title: 'Wirecutter — How to clean a vacuum cleaner', url: 'https://www.nytimes.com/wirecutter/guides/how-to-clean-vacuum-cleaner/', trust: 'trusted' },
+  'wikihow-vac': { title: 'wikiHow — How to maintain a vacuum cleaner', url: 'https://www.wikihow.life/Maintain-a-Vacuum-Cleaner', trust: 'credible' },
+  'yourspares-vac': { title: 'YourSpares — Vacuum cleaner not picking up dirt', url: 'https://www.yourspares.co.uk/advice/vacuum-cleaner-not-picking-up-dirt-causes-and-how-to-fix-it.aspx', trust: 'unrated' },
+  'tcl-wm': { title: 'TCL — Washing machine noise during the spin cycle', url: 'https://www.tcl.com/in/en/support-washing-machine/faq/719', trust: 'credible' },
+  'london-wm': { title: 'London Emergency Appliance Repair — Washing machine noisy spin', url: 'https://londonemergencyappliancerepair.com/washing-machine-banging-noisy-spin/', trust: 'unrated' },
+  'tricity-wm': { title: 'Tricity Appliance Repair — Drum bearings failing', url: 'https://tricityrepairs.ca/blog/signs-your-washing-machine-drum-bearings-are-failing/', trust: 'unrated' },
+  'maine-legionella': { title: 'Maine CDC — Hot water heater Legionella checklist', url: 'https://mobile.maine.gov/dhhs/mecdc/sites/maine.gov.dhhs.mecdc/files/epi/legionella-water-heater-checklist.pdf', trust: 'authoritative' },
+  'pmc-legionella': { title: 'PMC — Water heater set point and Legionella', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4666224/', trust: 'authoritative' },
+  'phcp-legionella': { title: 'PHCP Pros — Legionella growth in hot water systems', url: 'https://www.phcppros.com/articles/8259-legionella-growth-in-hot-water-systems', trust: 'credible' },
+  'philips-ap': { title: 'Philips — Air purifier user manual (particle sensor)', url: 'https://www.documents.philips.com/assets/20220414/72329880be804b31a793ae7700984034.pdf', trust: 'authoritative' },
+  'daikin-ap': { title: 'Daikin — Air purifier operation manual (PM2.5 sensor)', url: 'https://www.daikin.eu/content/dam/document-library/operation-manuals/airp/air-purifiers/mc80z/MC80Z_Operation%20manual_3PEN690982-1_English.pdf', trust: 'trusted' },
+  'repairclinic-hood': { title: 'Repair Clinic — Range vent hood motor is loud or noisy', url: 'https://www.repairclinic.com/RepairHelp/How-To-Fix-A-Range-Vent-Hood/110---/Range-Vent-Hood-Motor-Is-Loud-Or-Noisy', trust: 'credible' },
+  'appliancepartspros-hood': { title: 'Appliance Parts Pros — Range hood motor noisy: causes and fixes', url: 'https://www.appliancepartspros.com/repair-help/thermador-range-vent-hood-repair-help/range-vent-hood-motor-is-loud-or-noisy.html', trust: 'credible' },
+  'hauslane-range': { title: 'Hauslane — Gas range annual inspection steps', url: 'https://hauslane.com/blogs/resources/9-step-annual-inspection-guide-for-gas-ranges-natural-gas-propane', trust: 'unrated' },
+  'nationwide-stove': { title: 'Nationwide Appliance Repairs — Gas stove not lighting', url: 'https://nationwideappliancerepairs.com.au/gas-stove-not-lighting/', trust: 'unrated' },
+  'fireinspected-ext': { title: 'FireInspected — NFPA 10 hydrostatic testing requirements', url: 'https://fireinspected.com/blog/fire-extinguisher-hydrostatic-testing-requirements/', trust: 'unrated' },
+  'essential-ext': { title: 'Essential — NFPA 10 fire extinguisher inspection guide', url: 'https://www.withessential.com/resources/nfpa-10-fire-extinguisher-inspection', trust: 'unrated' },
+  'nfpa-smoke-maint': { title: 'NFPA — How to maintain smoke detectors', url: 'https://www.nfpa.org/news-blogs-and-articles/blogs/2020/08/17/how-do-i-maintain-my-smoke-detector', trust: 'trusted' },
+  'firstalert-clean': { title: 'First Alert — How to clean a smoke alarm', url: 'https://www.firstalertstore.com/store/product-support/how-to-clean-a-smoke-alarm.htm', trust: 'unrated' },
+  'ge-defrost': { title: 'GE Appliances — Repairing a clogged defrost drain', url: 'https://products.geappliances.com/appliance/gea-support-search-content?contentId=21865', trust: 'trusted' },
+  'parts-defrost': { title: 'Appliance Parts Pros — Refrigerator defrost drain clogged', url: 'https://www.appliancepartspros.com/repair-help/edina-refrigerator-repair-help/refrigerator-defrost-drain-clogged.html', trust: 'credible' },
+  'ruralenergy-heater': { title: 'Rural Energy — Gas heater maintenance and safety', url: 'https://www.ruralenergy.com/news-vault/nvgasheatermaintain', trust: 'credible' },
+  'heaterguides': { title: 'HeaterGuides — How to maintain a gas heater', url: 'https://heaterguides.com/how-to-maintain-a-gas-heater/', trust: 'unrated' }
+}

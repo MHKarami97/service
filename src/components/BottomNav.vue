@@ -38,5 +38,13 @@ var store = useServiceStore()
       <span class="text-xl">💡</span>
       <span>راهنما</span>
     </RouterLink>
+    <RouterLink
+      to="/settings"
+      class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-3 text-xs"
+      :class="route.name === 'settings' ? 'text-brand-500 font-semibold' : 'text-slate-500 dark:text-slate-400'"
+    >
+      <span class="text-xl">⚙️</span>
+      <span>تنظیمات</span>
+    </RouterLink>
   </nav>
 </template>

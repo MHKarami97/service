@@ -187,6 +187,54 @@ export var useServiceStore = defineStore('service', {
         console.error('خطا در درون‌ریزی داده‌ها:', error)
         throw error
       }
+    },
+
+    buildPayload() {
+      return {
+        version: '1.0',
+        exportedAt: new Date().toISOString(),
+        items: this.items.map((item) => item.toJSON()),
+        theme: this.isDarkMode ? 'dark' : 'light'
+      }
+    },
+
+    async restoreCloudPayload(payload, mode = 'replace') {
+      if (!payload || !Array.isArray(payload.items)) {
+        throw new Error('ساختار فایل پشتیبان نامعتبر است.')
+      }
+      var incoming = payload.items.map((json) => ServiceableItemFactory.createFromJSON(json))
+
+      if (mode === 'replace') {
+        this.items = incoming
+      } else {
+        var existingMap = new Map(this.items.map((item) => [item.id, item]))
+        for (var item of incoming) {
+          if (!existingMap.has(item.id)) {
+            this.items.push(item)
+          } else {
+            var existing = existingMap.get(item.id)
+            var recordIds = new Set(existing.serviceRecords.map((r) => r.id))
+            for (var record of item.serviceRecords) {
+              if (!recordIds.has(record.id)) {
+                existing.addRecord(record)
+              }
+            }
+            if (item.currentOdometer > existing.currentOdometer) {
+              existing.setCurrentOdometer(item.currentOdometer)
+            }
+          }
+        }
+      }
+
+      if (payload.theme) {
+        this.isDarkMode = payload.theme === 'dark'
+        this.applyTheme()
+        localStorage.setItem('service-management:theme', payload.theme)
+      }
+
+      this.activeItemId = this.items[0]?.id ?? null
+      this.persistAll()
+      return { restoredCount: this.items.length }
     }
   }
 })

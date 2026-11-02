@@ -2,6 +2,22 @@ import { ServiceableItemFactory } from './ServiceableItemFactory'
 import { storageService } from './StorageService'
 
 var STORAGE_KEY = 'items'
+var mutationListeners = new Set()
+
+export function onServiceMutation(listener) {
+  mutationListeners.add(listener)
+  return () => mutationListeners.delete(listener)
+}
+
+export function notifyServiceMutation() {
+  for (var listener of mutationListeners) {
+    try {
+      listener()
+    } catch (e) {
+      console.error(e)
+    }
+  }
+}
 
 /**
  * Repository Pattern: the only place that knows ServiceableItem aggregates
@@ -23,7 +39,9 @@ export class ServiceRepository {
   }
 
   saveAll(items) {
-    return this.storage.set(STORAGE_KEY, items.map((item) => item.toJSON()))
+    var result = this.storage.set(STORAGE_KEY, items.map((item) => item.toJSON()))
+    notifyServiceMutation()
+    return result
   }
 
   getById(id) {

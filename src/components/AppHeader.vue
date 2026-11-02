@@ -48,6 +48,13 @@ var store = useServiceStore()
         >
           راهنما
         </RouterLink>
+        <RouterLink
+          to="/settings"
+          class="px-3 py-2 rounded-xl text-sm transition-colors"
+          :class="route.name === 'settings' ? 'bg-brand-50 text-brand-600 dark:bg-brand-700/20 dark:text-brand-300 font-semibold' : 'text-slate-500 dark:text-slate-400 hover:text-brand-500'"
+        >
+          تنظیمات
+        </RouterLink>
       </nav>
 
       <button

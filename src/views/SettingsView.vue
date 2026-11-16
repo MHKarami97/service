@@ -2,10 +2,12 @@
 import { ref } from 'vue'
 import { useServiceStore } from '../stores/serviceStore.js'
 import CloudBackupCard from '../components/settings/CloudBackupCard.vue'
+import AppIcon from '../components/AppIcon.vue'
 
 var store = useServiceStore()
 var importInput = ref(null)
-var manualMsg = ref('')
+var message = ref({ type: '', text: '' })
+var currentYear = new Date().getFullYear()
 
 function triggerImport() {
   importInput.value?.click()
@@ -16,69 +18,120 @@ async function handleImport(event) {
   if (file) {
     try {
       await store.importData(file)
-      manualMsg.value = 'اطلاعات با موفقیت از فایل بازیابی شد.'
+      message.value = { type: 'success', text: 'اطلاعات با موفقیت از فایل بازیابی شد.' }
     } catch (error) {
-      manualMsg.value = 'خطا در بارگذاری فایل: ' + (error.message || '')
+      message.value = { type: 'error', text: 'خطا در بارگذاری فایل: ' + (error.message || '') }
     }
   }
   event.target.value = ''
 }
+
+function handleExport() {
+  store.exportData()
+  message.value = { type: 'success', text: 'فایل پشتیبان دانلود شد.' }
+}
 </script>
 
 <template>
-  <div class="space-y-6 pb-12">
+  <div class="space-y-8">
     <div>
-      <h1 class="text-xl font-bold text-slate-800 dark:text-slate-100">تنظیمات</h1>
-      <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">مدیریت پشتیبان‌گیری ابری و داده‌های محلی برنامه</p>
+      <h1 class="text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100">تنظیمات</h1>
+      <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">ظاهر برنامه، پشتیبان‌گیری و مدیریت داده</p>
     </div>
 
-    <!-- Google Drive Cloud Backup -->
-    <CloudBackupCard />
+    <section class="space-y-3" aria-labelledby="appearance-title">
+      <h2 id="appearance-title" class="text-sm font-semibold text-slate-500">ظاهر</h2>
+      <button
+        type="button"
+        class="flex w-full min-h-[64px] items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 text-right dark:border-slate-800 dark:bg-slate-900"
+        :aria-pressed="store.isDarkMode"
+        @click="store.toggleTheme"
+      >
+        <span class="flex size-11 items-center justify-center rounded-xl bg-amber-50 text-amber-600 dark:bg-slate-800 dark:text-amber-300">
+          <AppIcon :name="store.isDarkMode ? 'moon' : 'sun'" />
+        </span>
+        <span class="flex-1">
+          <span class="block text-sm font-semibold">حالت تاریک</span>
+          <span class="block text-xs text-slate-400">{{ store.isDarkMode ? 'روشن است' : 'خاموش است' }}</span>
+        </span>
+      </button>
+    </section>
 
-    <!-- Manual Backup (JSON) -->
-    <div class="border border-slate-200 dark:border-slate-800 rounded-2xl p-5 bg-white dark:bg-slate-900 space-y-4">
-      <div>
-        <h3 class="text-base font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-5 h-5 text-slate-500">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>پشتیبان‌گیری دستی (فایل JSON)</span>
-        </h3>
-        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-          می‌توانید در هر زمان یک فایل متنی JSON از کلیه وسایل و سوابق سرویس‌ها دانلود کرده یا فایل قبلی را درون‌ریزی نمایید.
-        </p>
-      </div>
+    <section class="space-y-3" aria-labelledby="cloud-title">
+      <h2 id="cloud-title" class="text-sm font-semibold text-slate-500">پشتیبان‌گیری ابری</h2>
+      <CloudBackupCard />
+    </section>
 
-      <div v-if="manualMsg" class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 text-xs text-slate-700 dark:text-slate-300 flex justify-between items-center">
-        <span>{{ manualMsg }}</span>
-        <button type="button" class="p-1 opacity-70 hover:opacity-100" @click="manualMsg = ''">✕</button>
-      </div>
+    <section class="space-y-3" aria-labelledby="data-title">
+      <h2 id="data-title" class="text-sm font-semibold text-slate-500">مدیریت داده (فایل JSON)</h2>
+      <p class="text-xs leading-6 text-slate-500 dark:text-slate-400">
+        از همه‌ی وسایل و سوابق سرویس‌ها فایل پشتیبان بگیرید یا فایل قبلی را بازیابی کنید.
+      </p>
 
-      <div class="flex flex-wrap items-center gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <button
           type="button"
-          class="min-h-[44px] px-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-brand-500 text-xs font-semibold flex items-center gap-2 transition-colors"
-          @click="store.exportData"
+          class="flex min-h-[64px] items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 text-right transition-colors hover:border-brand-400 dark:border-slate-800 dark:bg-slate-900"
+          @click="handleExport"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-4 h-4 text-brand-500">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>دانلود فایل پشتیبان (خروجی)</span>
+          <span class="flex size-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-300">
+            <AppIcon name="download" />
+          </span>
+          <span>
+            <span class="block text-sm font-semibold">خروجی</span>
+            <span class="block text-xs text-slate-400">دانلود فایل پشتیبان</span>
+          </span>
         </button>
 
-        <input ref="importInput" type="file" accept="application/json" class="hidden" @change="handleImport" />
-
         <button
           type="button"
-          class="min-h-[44px] px-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-brand-500 text-xs font-semibold flex items-center gap-2 transition-colors"
+          class="flex min-h-[64px] items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 text-right transition-colors hover:border-brand-400 dark:border-slate-800 dark:bg-slate-900"
           @click="triggerImport"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="w-4 h-4 text-brand-500">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>بازگردانی از فایل (ورودی)</span>
+          <span class="flex size-11 items-center justify-center rounded-xl bg-sky-50 text-sky-600 dark:bg-sky-900/20 dark:text-sky-300">
+            <AppIcon name="upload" />
+          </span>
+          <span>
+            <span class="block text-sm font-semibold">ورودی</span>
+            <span class="block text-xs text-slate-400">بازگردانی از فایل</span>
+          </span>
         </button>
       </div>
-    </div>
+      <input ref="importInput" type="file" accept="application/json" class="hidden" @change="handleImport" />
+
+      <p
+        v-if="message.text"
+        class="flex items-start justify-between gap-2 rounded-xl p-3 text-xs"
+        :class="message.type === 'success'
+          ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-300'
+          : 'bg-red-50 text-red-700 dark:bg-red-900/20 dark:text-red-300'"
+        role="status"
+      >
+        <span>{{ message.text }}</span>
+        <button type="button" class="opacity-70 hover:opacity-100" aria-label="بستن پیام" @click="message = { type: '', text: '' }">
+          <AppIcon name="close" :size="16" />
+        </button>
+      </p>
+    </section>
+
+    <section class="space-y-3" aria-labelledby="about-title">
+      <h2 id="about-title" class="text-sm font-semibold text-slate-500">درباره</h2>
+      <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+        <p class="text-sm font-bold">مدیریت سرویس</p>
+        <p class="mt-1 text-xs leading-6 text-slate-500 dark:text-slate-400">
+          ساخته‌شده توسط <span class="font-medium text-slate-700 dark:text-slate-200">محمدحسین کرمی</span>
+        </p>
+        <a
+          href="https://mhkarami97.ir"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-brand-300 px-4 text-sm font-medium text-brand-600 transition-colors hover:bg-brand-50 dark:text-brand-300 dark:hover:bg-slate-800"
+        >
+          <span>mhkarami97.ir</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <p class="mt-3 text-[11px] text-slate-400">© {{ currentYear }} مدیریت سرویس</p>
+      </div>
+    </section>
   </div>
 </template>

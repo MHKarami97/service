@@ -21,7 +21,7 @@ function reload() {
   <Transition name="fade">
     <div
       v-if="needRefresh"
-      class="fixed bottom-20 sm:bottom-6 inset-x-0 z-40 flex justify-center px-4"
+      class="fixed bottom-28 sm:bottom-6 inset-x-0 z-40 flex justify-center px-4"
     >
       <div class="bg-slate-900 dark:bg-slate-800 text-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 max-w-sm w-full">
         <span class="text-sm flex-1">نسخه جدید اپلیکیشن آمادست</span>

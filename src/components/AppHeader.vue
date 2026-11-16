@@ -1,9 +1,13 @@
 <script setup>
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useServiceStore } from '../stores/serviceStore'
+import AppIcon from './AppIcon.vue'
+import { NAV_ITEMS, isNavActive } from '../data/appNav'
 
 var route = useRoute()
 var store = useServiceStore()
+var upcomingCount = computed(() => store.overdueCount + store.soonCount)
 </script>
 
 <template>
@@ -20,50 +24,31 @@ var store = useServiceStore()
         <span>مدیریت سرویس</span>
       </RouterLink>
 
-      <nav class="hidden sm:flex items-center gap-1">
+      <nav class="hidden sm:flex items-center gap-1" aria-label="منوی اصلی">
         <RouterLink
-          to="/"
-          class="px-3 py-2 rounded-xl text-sm transition-colors"
-          :class="route.name === 'home' ? 'bg-brand-50 text-brand-600 dark:bg-brand-700/20 dark:text-brand-300 font-semibold' : 'text-slate-500 dark:text-slate-400 hover:text-brand-500'"
-        >
-          وسایل من
-        </RouterLink>
-        <RouterLink
-          to="/upcoming"
+          v-for="item in NAV_ITEMS"
+          :key="item.id"
+          :to="item.to"
           class="relative px-3 py-2 rounded-xl text-sm transition-colors"
-          :class="route.name === 'upcoming' ? 'bg-brand-50 text-brand-600 dark:bg-brand-700/20 dark:text-brand-300 font-semibold' : 'text-slate-500 dark:text-slate-400 hover:text-brand-500'"
+          :class="isNavActive(item, route.name) ? 'bg-brand-50 text-brand-600 dark:bg-brand-700/20 dark:text-brand-300 font-semibold' : 'text-slate-500 dark:text-slate-400 hover:text-brand-500'"
         >
-          سرویس‌های پیش رو
+          {{ item.title }}
           <span
-            v-if="store.overdueCount + store.soonCount > 0"
+            v-if="item.id === 'upcoming' && upcomingCount > 0"
             class="mr-1 inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full bg-red-500 text-white text-[10px]"
           >
-            {{ store.overdueCount + store.soonCount }}
+            {{ upcomingCount }}
           </span>
-        </RouterLink>
-        <RouterLink
-          to="/guide"
-          class="px-3 py-2 rounded-xl text-sm transition-colors"
-          :class="route.name === 'guide' ? 'bg-brand-50 text-brand-600 dark:bg-brand-700/20 dark:text-brand-300 font-semibold' : 'text-slate-500 dark:text-slate-400 hover:text-brand-500'"
-        >
-          راهنما
-        </RouterLink>
-        <RouterLink
-          to="/settings"
-          class="px-3 py-2 rounded-xl text-sm transition-colors"
-          :class="route.name === 'settings' ? 'bg-brand-50 text-brand-600 dark:bg-brand-700/20 dark:text-brand-300 font-semibold' : 'text-slate-500 dark:text-slate-400 hover:text-brand-500'"
-        >
-          تنظیمات
         </RouterLink>
       </nav>
 
       <button
         type="button"
-        class="w-11 h-11 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0"
+        class="w-11 h-11 flex items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 transition-colors flex-shrink-0"
         :aria-label="store.isDarkMode ? 'حالت روشن' : 'حالت تاریک'"
         @click="store.toggleTheme"
       >
-        <span class="text-xl">{{ store.isDarkMode ? '☀️' : '🌙' }}</span>
+        <AppIcon :name="store.isDarkMode ? 'sun' : 'moon'" />
       </button>
     </div>
   </header>

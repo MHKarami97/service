@@ -33,7 +33,7 @@ async function retry() {
     <div
       v-if="isVisible"
       role="status"
-      class="fixed inset-x-0 bottom-16 sm:bottom-0 z-30 bg-amber-500 text-white shadow-[0_-4px_16px_rgba(0,0,0,0.15)]"
+      class="fixed inset-x-0 bottom-28 sm:bottom-0 z-30 bg-amber-500 text-white shadow-[0_-4px_16px_rgba(0,0,0,0.15)]"
     >
       <div class="max-w-4xl mx-auto px-4 py-2.5 flex items-center justify-between gap-3 text-xs font-semibold">
         <div class="flex items-center gap-2 min-w-0">

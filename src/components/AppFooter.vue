@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useServiceStore } from '../stores/serviceStore'
+import AppIcon from './AppIcon.vue'
 
 var currentYear = new Date().getFullYear()
 var store = useServiceStore()
@@ -28,18 +29,20 @@ async function handleImport(event) {
     <div dir="ltr" class="flex items-center justify-end gap-2 border-t border-slate-100 dark:border-slate-800 pt-3 pb-3 max-w-4xl mx-auto px-4 sm:px-6">
       <button
         type="button"
-        class="min-h-[32px] px-2.5 rounded-lg border border-slate-200 dark:border-slate-700 text-[11px] hover:border-brand-300 hover:text-brand-500 transition-colors"
+        class="min-h-[32px] px-2.5 rounded-lg border border-slate-200 dark:border-slate-700 text-[11px] hover:border-brand-300 hover:text-brand-500 transition-colors inline-flex items-center gap-1.5"
         @click="store.exportData"
       >
-        خروجی
+        <AppIcon name="download" :size="13" />
+        <span>خروجی</span>
       </button>
       <input ref="importInput" type="file" accept="application/json" class="hidden" @change="handleImport" />
       <button
         type="button"
-        class="min-h-[32px] px-2.5 rounded-lg border border-slate-200 dark:border-slate-700 text-[11px] hover:border-brand-300 hover:text-brand-500 transition-colors"
+        class="min-h-[32px] px-2.5 rounded-lg border border-slate-200 dark:border-slate-700 text-[11px] hover:border-brand-300 hover:text-brand-500 transition-colors inline-flex items-center gap-1.5"
         @click="triggerImport"
       >
-        ورودی
+        <AppIcon name="upload" :size="13" />
+        <span>ورودی</span>
       </button>
       <span class="ml-1 mr-5 text-[11px] text-slate-400">مدیریت داده</span>
     </div>
@@ -52,8 +55,9 @@ async function handleImport(event) {
           rel="noopener noreferrer"
           class="inline-flex items-center gap-1.5 text-slate-500 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-400 transition-colors"
         >
-          ساخته شده توسط
+          <span>ساخته شده توسط</span>
           <span class="font-medium underline underline-offset-4">mhkarami97.ir</span>
+          <AppIcon name="external-link" :size="12" />
         </a>
       </div>
     </div>

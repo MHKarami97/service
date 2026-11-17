@@ -5,6 +5,7 @@ import { guideRepository } from '../services/GuideRepository'
 import { useGuide } from '../composables/useGuide'
 import GuideModal from '../components/GuideModal.vue'
 import GuideButton from '../components/GuideButton.vue'
+import AppIcon from '../components/AppIcon.vue'
 
 var store = useServiceStore()
 var { openGuide } = useGuide()
@@ -47,7 +48,9 @@ var groupedCatalog = computed(() =>
         class="group rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
       >
         <summary class="flex items-center gap-3 p-4 cursor-pointer list-none min-h-[56px]">
-          <span class="text-2xl">{{ row.entry.icon }}</span>
+          <div class="flex size-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600 dark:bg-brand-900/25 dark:text-brand-300 flex-shrink-0">
+            <AppIcon :name="row.entry.icon" :size="22" />
+          </div>
           <span class="flex-1 font-medium text-sm sm:text-base">{{ row.entry.name }}</span>
           <span class="text-[11px] text-slate-400">
             {{ row.coverage.covered.toLocaleString('fa-IR') }} از {{ row.coverage.total.toLocaleString('fa-IR') }} راهنما

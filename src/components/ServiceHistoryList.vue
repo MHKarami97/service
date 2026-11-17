@@ -1,6 +1,7 @@
 <script setup>
 import { formatDate, formatToman } from '../services/ServiceStatusPresenter'
 import GuideButton from './GuideButton.vue'
+import AppIcon from './AppIcon.vue'
 
 defineProps({
   records: { type: Array, required: true },
@@ -25,10 +26,10 @@ defineEmits(['edit', 'remove', 'guide'])
         <div class="flex items-center gap-1">
           <GuideButton v-if="hasGuide(record.serviceType)" compact @click="$emit('guide', record.serviceType)" />
           <button type="button" class="min-w-[36px] min-h-[36px] flex items-center justify-center text-slate-400 hover:text-brand-500 transition-colors" aria-label="ویرایش" @click="$emit('edit', record)">
-            ✏️
+            <AppIcon name="pencil" :size="16" />
           </button>
           <button type="button" class="min-w-[36px] min-h-[36px] flex items-center justify-center text-slate-400 hover:text-red-500 transition-colors" aria-label="حذف" @click="$emit('remove', record.id)">
-            🗑️
+            <AppIcon name="trash" :size="16" />
           </button>
         </div>
       </div>

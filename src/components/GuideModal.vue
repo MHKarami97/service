@@ -1,14 +1,15 @@
 <script setup>
 import { watch, onUnmounted } from 'vue'
 import { useGuide } from '../composables/useGuide'
+import AppIcon from './AppIcon.vue'
 
 var { activeGuide, closeGuide } = useGuide()
 
 var SECTIONS = [
-  { key: 'recommendations', label: 'نکات انتخاب و خرید', icon: '✅' },
-  { key: 'alsoConsider', label: 'بهتر است هم‌زمان بررسی/تعویض شود', icon: '🔁' },
-  { key: 'askMechanic', label: 'از تعمیرکار بخواهید', icon: '🔧' },
-  { key: 'warnings', label: 'هشدارها', icon: '⚠️' }
+  { key: 'recommendations', label: 'نکات انتخاب و خرید', icon: 'check-circle', color: 'text-emerald-500' },
+  { key: 'alsoConsider', label: 'بهتر است هم‌زمان بررسی/تعویض شود', icon: 'repeat', color: 'text-sky-500' },
+  { key: 'askMechanic', label: 'از تعمیرکار بخواهید', icon: 'wrench', color: 'text-amber-500' },
+  { key: 'warnings', label: 'هشدارها', icon: 'alert', color: 'text-rose-500' }
 ]
 
 var TRUST_LABELS = {
@@ -61,7 +62,7 @@ onUnmounted(() => {
               aria-label="بستن"
               @click="closeGuide"
             >
-              ✕
+              <AppIcon name="close" :size="18" />
             </button>
           </header>
 
@@ -69,13 +70,19 @@ onUnmounted(() => {
             <p v-if="activeGuide.summary">{{ activeGuide.summary }}</p>
 
             <div v-if="activeGuide.interval" class="rounded-xl bg-brand-50 dark:bg-brand-700/20 px-3 py-2.5">
-              <p class="text-[11px] text-brand-700 dark:text-brand-200 mb-1">⏱️ زمان/کیلومتر معمول</p>
+              <p class="text-[11px] text-brand-700 dark:text-brand-200 mb-1 flex items-center gap-1.5 font-medium">
+                <AppIcon name="clock" :size="14" />
+                <span>زمان/کیلومتر معمول</span>
+              </p>
               <p class="text-xs sm:text-sm">{{ activeGuide.interval }}</p>
             </div>
 
             <template v-for="section in SECTIONS" :key="section.key">
               <section v-if="activeGuide[section.key].length" class="space-y-2">
-                <h4 class="font-semibold text-sm">{{ section.icon }} {{ section.label }}</h4>
+                <h4 class="font-semibold text-sm flex items-center gap-2">
+                  <AppIcon :name="section.icon" :size="17" :class="section.color" />
+                  <span>{{ section.label }}</span>
+                </h4>
                 <ul class="space-y-1.5 list-disc pr-5 marker:text-brand-400">
                   <li v-for="line in activeGuide[section.key]" :key="line">{{ line }}</li>
                 </ul>

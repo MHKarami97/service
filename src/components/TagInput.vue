@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import AppIcon from './AppIcon.vue'
 
 /**
  * Reusable chip-list input: user types a value and presses Enter or the
@@ -62,7 +63,9 @@ function availableSuggestions() {
         class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 dark:bg-brand-700/20 text-brand-700 dark:text-brand-200 text-xs px-3 py-1.5"
       >
         {{ tag }}
-        <button type="button" class="text-brand-500 hover:text-red-500" :aria-label="`حذف ${tag}`" @click="removeTag(tag)">✕</button>
+        <button type="button" class="text-brand-500 hover:text-red-500 flex items-center justify-center" :aria-label="`حذف ${tag}`" @click="removeTag(tag)">
+          <AppIcon name="close" :size="12" />
+        </button>
       </span>
     </div>
 
@@ -71,10 +74,11 @@ function availableSuggestions() {
         v-for="suggestion in availableSuggestions()"
         :key="suggestion"
         type="button"
-        class="rounded-full border border-slate-200 dark:border-slate-700 text-[11px] px-2.5 py-1 text-slate-500 dark:text-slate-400 hover:border-brand-300 hover:text-brand-500 transition-colors"
+        class="rounded-full border border-slate-200 dark:border-slate-700 text-[11px] px-2.5 py-1 text-slate-500 dark:text-slate-400 hover:border-brand-300 hover:text-brand-500 transition-colors inline-flex items-center gap-1"
         @click="commit(suggestion)"
       >
-        + {{ suggestion }}
+        <AppIcon name="plus" :size="10" />
+        <span>{{ suggestion }}</span>
       </button>
     </div>
   </div>

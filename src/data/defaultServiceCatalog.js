@@ -3,7 +3,7 @@ export var defaultServiceCatalog = [
     id: 'car',
     type: 'vehicle',
     name: 'خودرو سواری',
-    icon: '🚗',
+    icon: 'car',
     version: 1,
     serviceTypes: [
       { id: 'oil-change', title: 'تعویض روغن موتور' },
@@ -37,7 +37,7 @@ export var defaultServiceCatalog = [
     id: 'motorcycle',
     type: 'vehicle',
     name: 'موتورسیکلت',
-    icon: '🏍️',
+    icon: 'motorcycle',
     version: 1,
     serviceTypes: [
       { id: 'moto-oil-change', title: 'تعویض روغن موتور' },
@@ -57,7 +57,7 @@ export var defaultServiceCatalog = [
     id: 'bicycle',
     type: 'vehicle',
     name: 'دوچرخه',
-    icon: '🚲',
+    icon: 'bicycle',
     version: 1,
     serviceTypes: [
       { id: 'bike-chain-lube', title: 'روغن‌کاری زنجیر' },
@@ -72,7 +72,7 @@ export var defaultServiceCatalog = [
     id: 'ac-cooler',
     type: 'appliance',
     name: 'کولر آبی',
-    icon: '❄️',
+    icon: 'cooler',
     version: 1,
     serviceTypes: [
       { id: 'cooler-belt', title: 'تسمه کولر' },
@@ -86,7 +86,7 @@ export var defaultServiceCatalog = [
     id: 'split-ac',
     type: 'appliance',
     name: 'کولر گازی (اسپلیت)',
-    icon: '🌬️',
+    icon: 'split-ac',
     version: 1,
     serviceTypes: [
       { id: 'split-filter-cleaning', title: 'شستشوی فیلتر یونیت داخلی' },
@@ -99,7 +99,7 @@ export var defaultServiceCatalog = [
     id: 'washing-machine',
     type: 'appliance',
     name: 'ماشین لباسشویی',
-    icon: '🧺',
+    icon: 'washing-machine',
     version: 1,
     serviceTypes: [
       { id: 'wm-filter-cleaning', title: 'تخلیه و شستشوی فیلتر' },
@@ -113,7 +113,7 @@ export var defaultServiceCatalog = [
     id: 'dishwasher',
     type: 'appliance',
     name: 'ماشین ظرفشویی',
-    icon: '🍽️',
+    icon: 'dishwasher',
     version: 1,
     serviceTypes: [
       { id: 'dw-filter-cleaning', title: 'شستشوی فیلتر' },
@@ -126,7 +126,7 @@ export var defaultServiceCatalog = [
     id: 'refrigerator',
     type: 'appliance',
     name: 'یخچال فریزر',
-    icon: '🧊',
+    icon: 'refrigerator',
     version: 1,
     serviceTypes: [
       { id: 'fridge-gas-charge', title: 'شارژ گاز' },
@@ -139,7 +139,7 @@ export var defaultServiceCatalog = [
     id: 'gas-water-heater',
     type: 'appliance',
     name: 'آبگرمکن',
-    icon: '🔥',
+    icon: 'water-heater',
     version: 1,
     serviceTypes: [
       { id: 'wh-anode-rod', title: 'تعویض آنُد فداشونده' },
@@ -151,7 +151,7 @@ export var defaultServiceCatalog = [
     id: 'gas-package',
     type: 'appliance',
     name: 'پکیج شوفاژ',
-    icon: '♨️',
+    icon: 'boiler',
     version: 1,
     serviceTypes: [
       { id: 'boiler-annual-service', title: 'سرویس سالانه پکیج' },
@@ -164,7 +164,7 @@ export var defaultServiceCatalog = [
     id: 'gas-heater',
     type: 'appliance',
     name: 'بخاری گازی/نفتی',
-    icon: '🪔',
+    icon: 'heater',
     version: 1,
     serviceTypes: [
       { id: 'heater-burner-cleaning', title: 'تمیزکاری مشعل' },
@@ -177,7 +177,7 @@ export var defaultServiceCatalog = [
     id: 'water-purifier',
     type: 'appliance',
     name: 'دستگاه تصفیه آب',
-    icon: '💧',
+    icon: 'water-purifier',
     version: 1,
     serviceTypes: [
       { id: 'wp-sediment-filter', title: 'تعویض فیلتر شفاف (رسوب‌گیر)' },
@@ -190,7 +190,7 @@ export var defaultServiceCatalog = [
     id: 'air-purifier',
     type: 'appliance',
     name: 'دستگاه تصفیه هوا',
-    icon: '🌫️',
+    icon: 'air-purifier',
     version: 1,
     serviceTypes: [
       { id: 'ap-hepa-filter', title: 'تعویض فیلتر HEPA' },
@@ -202,7 +202,7 @@ export var defaultServiceCatalog = [
     id: 'range-hood',
     type: 'appliance',
     name: 'هود آشپزخانه',
-    icon: '💨',
+    icon: 'range-hood',
     version: 1,
     serviceTypes: [
       { id: 'hood-filter-cleaning', title: 'شستشوی فیلتر چربی‌گیر' },
@@ -214,7 +214,7 @@ export var defaultServiceCatalog = [
     id: 'gas-stove',
     type: 'appliance',
     name: 'اجاق گاز',
-    icon: '🍳',
+    icon: 'stove',
     version: 1,
     serviceTypes: [
       { id: 'stove-burner-cleaning', title: 'تمیزکاری شعله‌پخش‌کن‌ها' },
@@ -226,7 +226,7 @@ export var defaultServiceCatalog = [
     id: 'vacuum-cleaner',
     type: 'appliance',
     name: 'جاروبرقی',
-    icon: '🧹',
+    icon: 'vacuum',
     version: 1,
     serviceTypes: [
       { id: 'vac-filter-bag-replace', title: 'تعویض فیلتر یا کیسه خاک' },
@@ -238,7 +238,7 @@ export var defaultServiceCatalog = [
     id: 'fire-extinguisher',
     type: 'appliance',
     name: 'کپسول آتش‌نشانی',
-    icon: '🧯',
+    icon: 'extinguisher',
     version: 1,
     serviceTypes: [
       { id: 'extinguisher-pressure-check', title: 'بازرسی فشار سنج' },
@@ -250,7 +250,7 @@ export var defaultServiceCatalog = [
     id: 'smoke-gas-detector',
     type: 'appliance',
     name: 'دتکتور دود/گاز',
-    icon: '🚨',
+    icon: 'detector',
     version: 1,
     serviceTypes: [
       { id: 'detector-battery-replace', title: 'تعویض باتری' },
@@ -262,7 +262,7 @@ export var defaultServiceCatalog = [
     id: 'parking-door-motor',
     type: 'appliance',
     name: 'موتور درب پارکینگ',
-    icon: '🚪',
+    icon: 'door',
     version: 1,
     serviceTypes: [
       { id: 'pdm-chain-lube', title: 'روغن‌کاری زنجیر/شافت' },
@@ -274,7 +274,7 @@ export var defaultServiceCatalog = [
     id: 'elevator',
     type: 'appliance',
     name: 'آسانسور',
-    icon: '🛗',
+    icon: 'elevator',
     version: 1,
     serviceTypes: [
       { id: 'elevator-monthly-service', title: 'سرویس ماهانه قرارداد' },

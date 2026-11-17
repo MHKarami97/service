@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import AppIcon from './AppIcon.vue'
 import { toJalali, toGregorian, jalaaliMonthLength, JALALI_MONTH_NAMES, JALALI_WEEKDAY_LETTERS } from '../utils/jalaliCalendar'
 
 /**
@@ -153,7 +154,7 @@ onUnmounted(() => document.removeEventListener('mousedown', handleOutsideClick))
       @click="toggle"
     >
       <span :class="displayText ? '' : 'text-slate-400'">{{ displayText || placeholder }}</span>
-      <span class="text-slate-400 flex-shrink-0">📅</span>
+      <AppIcon name="calendar" :size="18" class="text-slate-400 flex-shrink-0" />
     </button>
 
     <div
@@ -161,11 +162,19 @@ onUnmounted(() => document.removeEventListener('mousedown', handleOutsideClick))
       class="absolute z-40 mt-2 w-72 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-xl p-3 right-0"
     >
       <div class="flex items-center justify-between mb-2">
-        <button type="button" class="w-8 h-8 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700" aria-label="سال قبل" @click="prevYear">«</button>
-        <button type="button" class="w-8 h-8 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700" aria-label="ماه قبل" @click="prevMonth">‹</button>
+        <button type="button" class="w-8 h-8 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500" aria-label="سال قبل" @click="prevYear">
+          <AppIcon name="chevrons-right" :size="15" />
+        </button>
+        <button type="button" class="w-8 h-8 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500" aria-label="ماه قبل" @click="prevMonth">
+          <AppIcon name="chevron-right" :size="15" />
+        </button>
         <span class="text-sm font-medium">{{ JALALI_MONTH_NAMES[viewMonth - 1] }} {{ viewYear.toLocaleString('fa-IR') }}</span>
-        <button type="button" class="w-8 h-8 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700" aria-label="ماه بعد" @click="nextMonth">›</button>
-        <button type="button" class="w-8 h-8 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700" aria-label="سال بعد" @click="nextYear">»</button>
+        <button type="button" class="w-8 h-8 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500" aria-label="ماه بعد" @click="nextMonth">
+          <AppIcon name="chevron-left" :size="15" />
+        </button>
+        <button type="button" class="w-8 h-8 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center justify-center text-slate-500" aria-label="سال بعد" @click="nextYear">
+          <AppIcon name="chevrons-left" :size="15" />
+        </button>
       </div>
 
       <div class="grid grid-cols-7 gap-1 text-center text-[11px] text-slate-400 mb-1">

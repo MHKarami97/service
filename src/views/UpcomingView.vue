@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useServiceStore } from '../stores/serviceStore'
 import StatusBadge from '../components/StatusBadge.vue'
+import AppIcon from '../components/AppIcon.vue'
 import { formatDate } from '../services/ServiceStatusPresenter'
 
 var store = useServiceStore()
@@ -24,7 +25,9 @@ var unknownEntries = computed(() => store.upcomingSorted.filter((entry) => entry
         :to="`/item/${entry.item.id}`"
         class="flex items-center gap-3 rounded-xl px-3 py-3 hover:bg-slate-50 dark:hover:bg-slate-700/40 transition-colors"
       >
-        <span class="text-2xl flex-shrink-0">{{ entry.item.icon }}</span>
+        <div class="flex size-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600 dark:bg-brand-900/25 dark:text-brand-300 flex-shrink-0">
+          <AppIcon :name="entry.item.icon" :size="20" />
+        </div>
         <div class="flex-1 min-w-0">
           <p class="text-sm font-medium truncate">{{ entry.item.name }}</p>
           <p class="text-xs text-slate-400 mt-0.5 truncate">
@@ -46,7 +49,9 @@ var unknownEntries = computed(() => store.upcomingSorted.filter((entry) => entry
         :to="`/item/${entry.item.id}`"
         class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/40 transition-colors"
       >
-        <span class="text-2xl flex-shrink-0">{{ entry.item.icon }}</span>
+        <div class="flex size-9 items-center justify-center rounded-lg bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400 flex-shrink-0">
+          <AppIcon :name="entry.item.icon" :size="18" />
+        </div>
         <span class="text-sm truncate">{{ entry.item.name }}</span>
       </RouterLink>
     </div>

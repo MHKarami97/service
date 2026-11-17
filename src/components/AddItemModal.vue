@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useServiceStore } from '../stores/serviceStore'
+import AppIcon from './AppIcon.vue'
 
 defineProps({ isOpen: { type: Boolean, default: false } })
 var emit = defineEmits(['close'])
@@ -10,7 +11,12 @@ var mode = ref('catalog')
 var selectedCatalogId = ref('')
 var customName = ref('')
 var customType = ref('appliance')
-var customIcon = ref('🔧')
+var customIcon = ref('wrench')
+
+var ICON_PRESETS = [
+  'car', 'motorcycle', 'bicycle', 'wrench', 'cooler', 'split-ac',
+  'washing-machine', 'refrigerator', 'boiler', 'heater', 'box', 'bulb'
+]
 
 var vehicleCatalog = computed(() => store.catalog.filter((entry) => entry.type === 'vehicle'))
 var applianceCatalog = computed(() => store.catalog.filter((entry) => entry.type === 'appliance'))
@@ -20,7 +26,7 @@ function reset() {
   selectedCatalogId.value = ''
   customName.value = ''
   customType.value = 'appliance'
-  customIcon.value = '🔧'
+  customIcon.value = 'wrench'
 }
 
 function close() {
@@ -73,12 +79,12 @@ function submit() {
                 v-for="entry in vehicleCatalog"
                 :key="entry.id"
                 type="button"
-                class="rounded-xl border px-3 py-2 text-sm flex items-center gap-2"
-                :class="selectedCatalogId === entry.id ? 'border-brand-500 bg-brand-50 dark:bg-brand-700/20' : 'border-slate-200 dark:border-slate-700'"
+                class="rounded-xl border px-3 py-2 text-sm flex items-center gap-2 transition-colors"
+                :class="selectedCatalogId === entry.id ? 'border-brand-500 bg-brand-50 dark:bg-brand-700/20 text-brand-700 dark:text-brand-300 font-medium' : 'border-slate-200 dark:border-slate-700'"
                 @click="selectedCatalogId = entry.id"
               >
-                <span>{{ entry.icon }}</span>
-                <span>{{ entry.name }}</span>
+                <AppIcon :name="entry.icon" :size="20" class="shrink-0" />
+                <span class="truncate">{{ entry.name }}</span>
               </button>
             </div>
           </div>
@@ -89,12 +95,12 @@ function submit() {
                 v-for="entry in applianceCatalog"
                 :key="entry.id"
                 type="button"
-                class="rounded-xl border px-3 py-2 text-sm flex items-center gap-2"
-                :class="selectedCatalogId === entry.id ? 'border-brand-500 bg-brand-50 dark:bg-brand-700/20' : 'border-slate-200 dark:border-slate-700'"
+                class="rounded-xl border px-3 py-2 text-sm flex items-center gap-2 transition-colors"
+                :class="selectedCatalogId === entry.id ? 'border-brand-500 bg-brand-50 dark:bg-brand-700/20 text-brand-700 dark:text-brand-300 font-medium' : 'border-slate-200 dark:border-slate-700'"
                 @click="selectedCatalogId = entry.id"
               >
-                <span>{{ entry.icon }}</span>
-                <span>{{ entry.name }}</span>
+                <AppIcon :name="entry.icon" :size="20" class="shrink-0" />
+                <span class="truncate">{{ entry.name }}</span>
               </button>
             </div>
           </div>
@@ -107,13 +113,25 @@ function submit() {
             placeholder="نام وسیله (مثلاً کولر گازی اتاق خواب)"
             class="w-full min-h-[44px] rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 text-sm"
           />
+          <div class="space-y-1.5">
+            <span class="text-xs text-slate-400">انتخاب آیکون</span>
+            <div class="flex flex-wrap gap-2">
+              <button
+                v-for="preset in ICON_PRESETS"
+                :key="preset"
+                type="button"
+                class="size-10 rounded-xl border flex items-center justify-center transition-colors"
+                :class="customIcon === preset ? 'border-brand-500 bg-brand-50 text-brand-600 dark:bg-brand-900/30 dark:text-brand-300' : 'border-slate-200 dark:border-slate-700 text-slate-500'"
+                @click="customIcon = preset"
+              >
+                <AppIcon :name="preset" :size="20" />
+              </button>
+            </div>
+          </div>
           <div class="flex items-center gap-3">
-            <input
-              v-model="customIcon"
-              type="text"
-              maxlength="2"
-              class="w-16 min-h-[44px] rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 text-center text-lg"
-            />
+            <div class="flex size-11 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-brand-600 dark:text-brand-400">
+              <AppIcon :name="customIcon" :size="22" />
+            </div>
             <select v-model="customType" class="flex-1 min-h-[44px] rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 text-sm">
               <option value="appliance">لوازم خانه</option>
               <option value="vehicle">وسیله نقلیه</option>

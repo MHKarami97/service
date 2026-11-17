@@ -31,7 +31,7 @@ export class ServiceableItemFactory {
     var base = {
       id: uid(),
       name,
-      icon: icon || (type === 'vehicle' ? '🚗' : '🔧'),
+      icon: icon || (type === 'vehicle' ? 'car' : 'wrench'),
       catalogId: null,
       isCustom: true,
       history: []

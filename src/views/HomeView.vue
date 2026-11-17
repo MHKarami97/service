@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import { useServiceStore } from '../stores/serviceStore'
 import ItemCard from '../components/ItemCard.vue'
 import AddItemModal from '../components/AddItemModal.vue'
+import AppIcon from '../components/AppIcon.vue'
 
 var store = useServiceStore()
 var isAdding = ref(false)
@@ -20,10 +21,11 @@ var applianceEntries = computed(() => store.itemsWithStatus.filter((entry) => en
       </div>
       <button
         type="button"
-        class="min-h-[44px] px-4 rounded-xl bg-brand-500 text-white text-sm font-medium hover:bg-brand-600 transition-colors self-start sm:self-auto"
+        class="min-h-[44px] px-4 rounded-xl bg-brand-500 text-white text-sm font-medium hover:bg-brand-600 transition-colors self-start sm:self-auto inline-flex items-center gap-1.5 shadow-sm"
         @click="isAdding = true"
       >
-        + افزودن وسیله
+        <AppIcon name="plus" :size="18" />
+        <span>افزودن وسیله</span>
       </button>
     </div>
 

@@ -6,6 +6,7 @@ import { useConfirm } from '../composables/useConfirm'
 import { useGuide } from '../composables/useGuide'
 import { guideRepository } from '../services/GuideRepository'
 import StatusBadge from '../components/StatusBadge.vue'
+import AppIcon from '../components/AppIcon.vue'
 import ServiceHistoryForm from '../components/ServiceHistoryForm.vue'
 import ServiceHistoryList from '../components/ServiceHistoryList.vue'
 import ConfirmDialog from '../components/ConfirmDialog.vue'
@@ -92,7 +93,9 @@ function saveOdometer() {
   <section v-if="item" class="space-y-6">
     <div class="flex items-start justify-between gap-3">
       <div class="flex items-center gap-3">
-        <span class="text-3xl">{{ item.icon }}</span>
+        <div class="flex size-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 dark:bg-brand-900/25 dark:text-brand-300 flex-shrink-0">
+          <AppIcon :name="item.icon" :size="30" />
+        </div>
         <div>
           <h1 class="text-xl sm:text-2xl font-bold">{{ item.name }}</h1>
           <StatusBadge :status="due.status" />
@@ -100,10 +103,11 @@ function saveOdometer() {
       </div>
       <button
         type="button"
-        class="min-h-[44px] px-3 rounded-xl border border-red-300 text-red-500 text-xs sm:text-sm flex-shrink-0"
+        class="min-h-[44px] px-3.5 rounded-xl border border-red-300 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 text-xs sm:text-sm flex-shrink-0 inline-flex items-center gap-1.5 transition-colors"
         @click="handleDeleteItem"
       >
-        حذف وسیله
+        <AppIcon name="trash" :size="15" />
+        <span>حذف وسیله</span>
       </button>
     </div>
 
@@ -141,7 +145,10 @@ function saveOdometer() {
     </div>
 
     <div v-if="guidedServiceTypes.length" class="rounded-2xl border border-brand-100 dark:border-brand-700/40 bg-brand-50/50 dark:bg-brand-700/10 p-4 sm:p-5 space-y-3">
-      <h2 class="text-sm font-semibold text-brand-700 dark:text-brand-200">💡 راهنمای سرویس‌ها</h2>
+      <h2 class="text-sm font-semibold text-brand-700 dark:text-brand-200 flex items-center gap-1.5">
+        <AppIcon name="bulb" :size="18" />
+        <span>راهنمای سرویس‌ها</span>
+      </h2>
       <p class="text-xs text-slate-500 dark:text-slate-400">روی هر سرویس بزنید تا نکات انتخاب، موارد هم‌زمان و پیشنهادهای بازرسی را ببینید.</p>
       <div class="flex flex-wrap gap-2">
         <GuideButton
@@ -156,8 +163,9 @@ function saveOdometer() {
 
     <div class="flex items-center justify-between">
       <h2 class="text-sm font-semibold text-slate-500 dark:text-slate-400">تاریخچه سرویس‌ها</h2>
-      <button type="button" class="min-h-[40px] px-3 rounded-xl bg-brand-500 text-white text-xs sm:text-sm hover:bg-brand-600 transition-colors" @click="openCreateForm">
-        + سرویس جدید
+      <button type="button" class="min-h-[40px] px-3.5 rounded-xl bg-brand-500 text-white text-xs sm:text-sm hover:bg-brand-600 transition-colors inline-flex items-center gap-1.5" @click="openCreateForm">
+        <AppIcon name="plus" :size="16" />
+        <span>سرویس جدید</span>
       </button>
     </div>
 

@@ -16,7 +16,7 @@ export class ServiceableItem {
   constructor({
     id,
     name,
-    icon = '🔧',
+    icon = 'wrench',
     type,
     catalogId = null,
     notes = '',

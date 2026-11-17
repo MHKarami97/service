@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import StatusBadge from './StatusBadge.vue'
+import AppIcon from './AppIcon.vue'
 import { formatDate } from '../services/ServiceStatusPresenter'
 
 var props = defineProps({
@@ -18,7 +19,9 @@ var lastRecord = computed(() => props.item.lastRecord)
   >
     <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
       <div class="flex items-center gap-3 min-w-0">
-        <span class="text-2xl sm:text-3xl flex-shrink-0">{{ item.icon }}</span>
+        <div class="flex size-11 sm:size-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 dark:bg-brand-900/25 dark:text-brand-300 flex-shrink-0">
+          <AppIcon :name="item.icon" :size="24" />
+        </div>
         <div class="min-w-0">
           <h3 class="font-semibold text-sm sm:text-base leading-tight truncate">{{ item.name }}</h3>
           <p class="text-xs text-slate-400 mt-0.5">{{ item.historyCount }} سرویس ثبت‌شده</p>

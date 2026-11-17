@@ -128,7 +128,7 @@ function handleExport() {
           class="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-brand-300 px-4 text-sm font-medium text-brand-600 transition-colors hover:bg-brand-50 dark:text-brand-300 dark:hover:bg-slate-800"
         >
           <span>mhkarami97.ir</span>
-          <span aria-hidden="true">↗</span>
+          <AppIcon name="external-link" :size="15" />
         </a>
         <p class="mt-3 text-[11px] text-slate-400">© {{ currentYear }} مدیریت سرویس</p>
       </div>
